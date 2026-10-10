@@ -1,619 +1,391 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Akademik — SMK</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<title>Portal Akademik SMK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
 :root{
-  --navy:#0A1628;
-  --navy2:#102040;
-  --navy3:#1A3060;
-  --gold:#D4A017;
-  --gold2:#F0C040;
-  --gold3:#FDE68A;
-  --teal:#0D9373;
-  --teal2:#10B884;
-  --sky:#1B6FC4;
-  --sky2:#2E8FE8;
-  --rose:#C0364A;
-  --violet:#6B3FA0;
-  --violet2:#9254D8;
-  --amber:#B05010;
-  --green:#1A7A40;
-  --bg:#F2F0EA;
-  --surface:#FFFFFF;
-  --border:rgba(10,22,40,0.10);
-  --text:#0A1628;
-  --muted:#5A6A8A;
-  --r:14px;
-  --r2:22px;
+  --ink:#0B1B33;
+  --ink2:#1B2E4F;
+  --paper:#EDF1F5;
+  --card:#FFFFFF;
+  --line:#D9DFE8;
+  --muted:#5B6B86;
+  --gold:#E5A82B;
+  --gold-soft:#F6DFA6;
+  --ok:#0F7B5C;
+  --ok-bg:#DDF3EA;
+  --wait:#80550A;
+  --wait-bg:#FBEECB;
+  --r:16px;
+  --display:'Bricolage Grotesque','Figtree',system-ui,sans-serif;
+  --body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
 }
 
+html{scroll-behavior:smooth;}
 body{
-  font-family:'Plus Jakarta Sans',sans-serif;
-  background:var(--bg);
-  color:var(--text);
+  font-family:var(--body);
+  background:var(--paper);
+  color:var(--ink);
   min-height:100vh;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
 }
+button,input{font-family:inherit;font-size:inherit;color:inherit;}
+button{cursor:pointer;}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:8px;}
 
-/* ─── HERO / HEADER ─── */
+/* ───────── HERO ───────── */
 .hero{
-  background:var(--navy);
-  position:relative;
-  overflow:hidden;
-  min-height:auto;
-}
-.hero-mesh{
-  position:absolute;inset:0;pointer-events:none;
   background:
-    radial-gradient(ellipse 60% 80% at 90% -5%, rgba(212,160,23,0.20) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 60% at -10% 80%, rgba(13,147,115,0.14) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 50% 110%, rgba(27,111,196,0.12) 0%, transparent 60%);
+    radial-gradient(ellipse 55% 90% at 100% 0%, rgba(229,168,43,.18), transparent 60%),
+    var(--ink);
+  color:#fff;
 }
-.hero-grid{
-  position:absolute;inset:0;pointer-events:none;opacity:.035;
-  background-image:
-    repeating-linear-gradient(90deg,#fff 0,#fff 1px,transparent 0,transparent 80px),
-    repeating-linear-gradient(0deg,#fff 0,#fff 1px,transparent 0,transparent 80px);
-}
-.hero-dots{
-  position:absolute;inset:0;pointer-events:none;opacity:.04;
-  background-image:radial-gradient(circle,#fff 1.5px,transparent 0);
-  background-size:28px 28px;
-}
+.hero-in{max-width:1200px;margin:0 auto;padding:0 40px;}
 
-/* NAV */
 .nav{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:20px 52px;
-  border-bottom:1px solid rgba(255,255,255,0.07);
-  position:relative;z-index:3;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:20px 0;border-bottom:1px solid rgba(255,255,255,.10);
 }
-.nav-brand{display:flex;align-items:center;gap:16px;}
-.nav-logo-wrap{
-  width:52px;height:52px;border-radius:14px;overflow:hidden;
-  flex-shrink:0;border:2px solid rgba(212,160,23,.35);
-  background:rgba(255,255,255,.06);
-  display:flex;align-items:center;justify-content:center;
+.brand{display:flex;align-items:center;gap:14px;min-width:0;}
+.brand-logo{
+  width:48px;height:48px;border-radius:12px;flex-shrink:0;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
 }
-.nav-logo-wrap img{width:44px;height:44px;object-fit:contain;}
-.nav-title{
-  color:rgba(255,255,255,.95);font-size:16px;font-weight:800;
-  line-height:1.2;letter-spacing:-.2px;
+.brand-logo img{width:40px;height:40px;object-fit:contain;}
+.brand-name{font-family:var(--display);font-weight:700;font-size:17px;line-height:1.2;}
+.brand-sub{font-size:12px;color:rgba(255,255,255,.55);}
+.nav-tags{display:flex;gap:8px;flex-shrink:0;}
+.nav-tag{
+  font-size:12px;font-weight:600;padding:6px 13px;border-radius:99px;
+  border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.75);
 }
-.nav-title span{
-  display:block;font-size:11px;font-weight:400;
-  color:rgba(255,255,255,.40);margin-top:2px;letter-spacing:.04em;
-}
-.nav-right{display:flex;align-items:center;gap:10px;}
-.nav-pill{
-  background:rgba(212,160,23,.18);border:1px solid rgba(212,160,23,.32);
-  color:var(--gold3);font-size:11px;font-weight:700;
-  padding:6px 15px;border-radius:20px;letter-spacing:.05em;
-}
-.nav-year{
-  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10);
-  color:rgba(255,255,255,.55);font-size:11px;font-weight:600;
-  padding:6px 14px;border-radius:20px;
-}
+.nav-tag.gold{background:rgba(229,168,43,.16);border-color:rgba(229,168,43,.4);color:var(--gold-soft);}
 
-/* HERO BODY */
 .hero-body{
-  position:relative;z-index:2;
-  display:grid;grid-template-columns:1fr 1fr;
-  align-items:center;gap:40px;
-  padding:52px 52px 44px;
-  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;
+  padding:48px 0 56px;
 }
-.hero-text{}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
-  color:rgba(255,255,255,.60);font-size:11px;font-weight:700;
-  letter-spacing:.10em;text-transform:uppercase;
-  padding:6px 16px;border-radius:20px;margin-bottom:24px;
+.hero h1{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(34px,4.6vw,56px);line-height:1.04;letter-spacing:-.02em;
+  margin-bottom:14px;
 }
-.hero-eyebrow-dot{
-  width:6px;height:6px;border-radius:50%;background:var(--gold2);flex-shrink:0;
-  animation:pulse 2s ease-in-out infinite;
-}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.7);}}
-.hero-h1{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(36px,4.5vw,58px);font-weight:900;
-  color:#fff;line-height:1.08;letter-spacing:-1.5px;
-  margin-bottom:16px;
-}
-.hero-h1 em{font-style:normal;color:var(--gold3);}
-.hero-desc{
-  font-size:14px;color:rgba(255,255,255,.48);
-  line-height:1.80;max-width:460px;margin-bottom:32px;
-}
+.hero-desc{color:rgba(255,255,255,.65);font-size:15px;max-width:460px;margin-bottom:26px;}
 
-.hero-stats{
-  display:flex;gap:0;border-radius:14px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(255,255,255,.04);
-  width:fit-content;
+.search{position:relative;max-width:480px;}
+.search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--muted);pointer-events:none;}
+.search input{
+  width:100%;height:54px;border-radius:14px;border:2px solid transparent;
+  background:#fff;color:var(--ink);padding:0 52px 0 48px;font-size:16px;font-weight:500;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
-.h-stat{padding:16px 28px;text-align:center;border-right:1px solid rgba(255,255,255,.07);}
-.h-stat:last-child{border-right:none;}
-.h-stat-n{font-size:26px;font-weight:800;color:#fff;line-height:1;}
-.h-stat-n b{color:var(--gold3);}
-.h-stat-l{font-size:10px;font-weight:600;color:rgba(255,255,255,.35);
-  text-transform:uppercase;letter-spacing:.06em;margin-top:4px;}
+.search input::placeholder{color:#8A97AE;font-weight:400;}
+.search input:focus{outline:none;border-color:var(--gold);}
+.search kbd{
+  position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  font-family:var(--body);font-size:12px;font-weight:700;color:var(--muted);
+  border:1px solid var(--line);border-radius:6px;padding:2px 8px;background:#F5F7FA;
+}
+.search-clear{
+  position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  width:32px;height:32px;border-radius:8px;border:none;background:#EEF1F5;color:var(--muted);
+  font-size:18px;line-height:1;display:none;
+}
+.search.has-text kbd{display:none;}
+.search.has-text .search-clear{display:block;}
 
-/* HERO VISUAL */
-.hero-visual{
-  position:relative;display:flex;justify-content:center;align-items:center;
+/* progress panel (the one memorable element) */
+.progress{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:20px;padding:10px;
 }
-.hero-visual-card{
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:22px;padding:28px 32px;
-  backdrop-filter:blur(10px);
-  width:100%;max-width:340px;
+.progress-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.55);padding:10px 14px 6px;}
+.prog-row{
+  display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center;
+  width:100%;text-align:left;background:transparent;border:none;border-radius:14px;
+  padding:14px;color:#fff;transition:background .15s;
 }
-.hvc-title{
-  font-size:12px;font-weight:700;color:rgba(255,255,255,.40);
-  text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;
-}
-.hvc-row{
-  display:flex;align-items:center;gap:10px;
-  padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);
-}
-.hvc-row:last-child{border-bottom:none;}
-.hvc-dot{
-  width:8px;height:8px;border-radius:50%;flex-shrink:0;
-}
-.hvc-name{font-size:12px;font-weight:500;color:rgba(255,255,255,.70);}
-.hvc-badge{
-  margin-left:auto;font-size:10px;font-weight:700;
-  padding:2px 8px;border-radius:6px;
-}
-.hvc-on{background:rgba(13,147,115,.30);color:#6EE7B7;}
-.hvc-soon{background:rgba(255,255,255,.07);color:rgba(255,255,255,.35);}
+.prog-row:hover{background:rgba(255,255,255,.08);}
+.prog-row.current{background:rgba(255,255,255,.12);}
+.prog-name{font-family:var(--display);font-weight:700;font-size:20px;}
+.prog-num{font-size:13px;color:rgba(255,255,255,.65);font-variant-numeric:tabular-nums;}
+.prog-num b{color:#fff;font-size:15px;}
+.prog-bar{grid-column:1/-1;height:8px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden;margin-top:6px;}
+.prog-fill{height:100%;border-radius:99px;background:var(--gold);transition:width .5s ease;}
+.prog-row.done .prog-fill{background:#3DD6A3;}
 
-.wave{line-height:0;position:relative;z-index:2;}
-.wave svg{display:block;width:100%;}
-
-/* MAIN WRAP */
+/* ───────── CONTROLS ───────── */
+.bar{
+  position:sticky;top:0;z-index:20;
+  background:rgba(237,241,245,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
 .wrap{max-width:1200px;margin:0 auto;padding:0 40px;}
+.tabs{display:flex;gap:8px;padding:14px 0;overflow-x:auto;}
+.tab{
+  display:inline-flex;align-items:center;gap:10px;white-space:nowrap;
+  padding:10px 20px;border-radius:12px;border:1.5px solid var(--line);
+  background:var(--card);color:var(--muted);font-weight:700;
+  transition:background .15s,color .15s,border-color .15s;
+}
+.tab:hover{border-color:var(--ink2);color:var(--ink);}
+.tab[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff;}
+.tab .count{
+  font-size:12px;min-width:24px;padding:1px 7px;border-radius:99px;text-align:center;
+  background:#E7ECF3;color:var(--ink2);font-variant-numeric:tabular-nums;
+}
+.tab[aria-pressed="true"] .count{background:rgba(255,255,255,.18);color:#fff;}
 
-/* LEVEL TABS */
-.tabs-bar{
-  display:flex;gap:8px;
-  padding:32px 0 0;
-  position:sticky;top:0;z-index:10;
+.filters{
+  display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between;
+  padding:20px 0 6px;
 }
-.tab-btn{
-  padding:11px 28px;border-radius:10px;
-  font-size:13px;font-weight:700;
-  border:1.5px solid var(--border);
-  background:var(--surface);color:var(--muted);
-  cursor:pointer;transition:all .2s;
-  font-family:'Plus Jakarta Sans',sans-serif;
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;}
+.chip{
+  white-space:nowrap;padding:7px 14px;border-radius:99px;font-size:13px;font-weight:600;
+  border:1.5px solid var(--line);background:transparent;color:var(--muted);
+  transition:all .15s;
 }
-.tab-btn:hover{border-color:var(--navy2);color:var(--navy);}
-.tab-btn.active{
-  background:var(--navy);color:#fff;border-color:var(--navy);
+.chip:hover{border-color:var(--ink2);color:var(--ink);}
+.chip[aria-pressed="true"]{background:var(--ink2);border-color:var(--ink2);color:#fff;}
+.seg{display:inline-flex;background:#E1E7EF;border-radius:11px;padding:3px;}
+.seg button{
+  border:none;background:transparent;padding:6px 14px;border-radius:8px;
+  font-size:13px;font-weight:600;color:var(--muted);
 }
+.seg button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(11,27,51,.15);}
+.result-line{font-size:13px;color:var(--muted);padding:10px 0 16px;}
 
-/* SECTION */
-.level-section{display:none;}
-.level-section.visible{display:block;}
-
-.sec{padding:36px 0 0;}
-.sec-last{padding-bottom:80px;}
-.sec-head{margin-bottom:28px;}
-.sec-tag{
-  display:inline-block;font-size:10px;font-weight:700;
-  text-transform:uppercase;letter-spacing:.10em;
-  padding:4px 12px;border-radius:20px;margin-bottom:10px;
+/* ───────── CARDS ───────── */
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px;
+  padding-bottom:72px;
 }
-.tag-gold{background:#FEF3DA;color:#B05010;}
-.sec-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(22px,2.5vw,32px);font-weight:800;
-  color:var(--navy);line-height:1.15;margin-bottom:6px;
+.card{
+  --c:#1B6FC4;--cbg:#E6F0FB;
+  position:relative;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--r);padding:20px 20px 18px 24px;
+  display:flex;flex-direction:column;gap:18px;overflow:hidden;
+  transition:box-shadow .2s,border-color .2s;
 }
-.sec-desc{font-size:13px;color:var(--muted);line-height:1.70;max-width:560px;}
-
-/* KELAS GRID */
-.kelas-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
-  gap:14px;
-}
-
-/* KELAS CARD */
-.kelas-card{
-  background:var(--surface);
-  border:1.5px solid var(--border);
-  border-radius:var(--r);
-  padding:20px 20px 16px;
-  display:flex;flex-direction:column;gap:14px;
-  position:relative;overflow:hidden;
-  transition:transform .2s,box-shadow .2s,border-color .2s;
-  cursor:default;
-}
-.kelas-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 14px 44px rgba(10,22,40,.10);
-  border-color:rgba(10,22,40,.18);
-}
-.kelas-card::after{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-}
-.ck-bisnis::after{background:linear-gradient(90deg,var(--sky),var(--sky2));}
-.ck-akl::after   {background:linear-gradient(90deg,var(--gold),var(--gold2));}
-.ck-pemasaran::after{background:linear-gradient(90deg,var(--teal),var(--teal2));}
-.ck-pariwisata::after{background:linear-gradient(90deg,var(--rose),#E8607A);}
-.ck-tkjt1::after {background:linear-gradient(90deg,var(--violet),var(--violet2));}
-.ck-tkjt2::after {background:linear-gradient(90deg,#5B2FA0,#8A60D8);}
-.ck-listrik1::after{background:linear-gradient(90deg,var(--amber),#E07020);}
-.ck-listrik2::after{background:linear-gradient(90deg,#903808,#C05020);}
-
-.card-row{display:flex;align-items:flex-start;gap:13px;}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c);}
+.card:hover{box-shadow:0 12px 36px rgba(11,27,51,.10);border-color:#C5CEDB;}
+.card.is-off{background:#F7F9FB;border-style:dashed;}
+.card.is-off::before{opacity:.45;}
+.card-top{display:flex;gap:14px;align-items:flex-start;}
 .card-icon{
-  width:40px;height:40px;border-radius:11px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:18px;flex-shrink:0;
+  width:46px;height:46px;border-radius:12px;background:var(--cbg);
+  display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;
 }
-.ck-bisnis   .card-icon{background:#E8F4FC;}
-.ck-akl      .card-icon{background:#FEF3DA;}
-.ck-pemasaran .card-icon{background:#E0F5EF;}
-.ck-pariwisata .card-icon{background:#FDEAF0;}
-.ck-tkjt1    .card-icon{background:#F0E8FF;}
-.ck-tkjt2    .card-icon{background:#EDE0FF;}
-.ck-listrik1 .card-icon{background:#FFF0E0;}
-.ck-listrik2 .card-icon{background:#FFE8E0;}
+.card-main{flex:1;min-width:0;}
+.card-label{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.1;letter-spacing:-.01em;color:var(--ink);}
+.card.is-off .card-label{color:var(--ink2);}
+.card-name{font-size:13px;color:var(--muted);margin-top:4px;}
+.status{
+  display:inline-flex;align-items:center;gap:6px;flex-shrink:0;
+  font-size:12px;font-weight:700;padding:4px 10px;border-radius:99px;
+}
+.status i{width:7px;height:7px;border-radius:50%;background:currentColor;}
+.status.on{background:var(--ok-bg);color:var(--ok);}
+.status.off{background:var(--wait-bg);color:var(--wait);}
 
-.card-info{flex:1;min-width:0;}
-.card-kelas-label{
-  font-size:10px;font-weight:700;letter-spacing:.08em;
-  text-transform:uppercase;margin-bottom:3px;
+.card-actions{display:flex;gap:8px;align-items:center;}
+.btn-open{
+  flex:1;text-align:center;text-decoration:none;font-weight:700;font-size:14px;
+  padding:11px 16px;border-radius:11px;background:var(--ink);color:#fff;
+  transition:background .15s,transform .15s;
 }
-.ck-bisnis   .card-kelas-label{color:var(--sky);}
-.ck-akl      .card-kelas-label{color:var(--amber);}
-.ck-pemasaran .card-kelas-label{color:var(--teal);}
-.ck-pariwisata .card-kelas-label{color:var(--rose);}
-.ck-tkjt1    .card-kelas-label{color:var(--violet);}
-.ck-tkjt2    .card-kelas-label{color:#7B4FC0;}
-.ck-listrik1 .card-kelas-label{color:var(--amber);}
-.ck-listrik2 .card-kelas-label{color:#903808;}
+.btn-open:hover{background:var(--ink2);transform:translateY(-1px);}
+.btn-open.disabled{background:#E7ECF3;color:#8493AB;pointer-events:none;}
+.icon-btn{
+  width:42px;height:42px;border-radius:11px;flex-shrink:0;
+  border:1.5px solid var(--line);background:#fff;color:var(--ink2);
+  display:flex;align-items:center;justify-content:center;transition:all .15s;
+}
+.icon-btn:hover{border-color:var(--ink2);background:var(--ink2);color:#fff;}
+.icon-btn[aria-expanded="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink);}
+.icon-btn svg{width:18px;height:18px;}
 
-.card-name{font-size:14px;font-weight:700;color:var(--text);line-height:1.35;}
+/* inline edit */
+.edit{display:grid;grid-template-rows:0fr;transition:grid-template-rows .22s ease;margin-top:-6px;}
+.card.editing .edit{grid-template-rows:1fr;}
+.edit > form{
+  overflow:hidden;visibility:hidden;min-height:0;
+  transition:visibility 0s .22s;
+}
+.card.editing .edit > form{visibility:visible;transition-delay:0s;}
+.edit-in{display:flex;flex-direction:column;gap:8px;padding:12px;background:#F2F5F9;border-radius:12px;margin-top:6px;}
+.edit label{font-size:13px;font-weight:700;color:var(--ink2);}
+.edit-row{display:flex;gap:8px;}
+.edit input{
+  flex:1;min-width:0;height:40px;border-radius:9px;border:1.5px solid var(--line);
+  background:#fff;padding:0 12px;font-size:13px;
+}
+.edit input:focus{outline:none;border-color:var(--ink2);}
+.btn-save{
+  height:40px;padding:0 16px;border-radius:9px;border:none;
+  background:var(--gold);color:var(--ink);font-weight:700;font-size:13px;
+}
+.btn-save:hover{filter:brightness(.95);}
+.edit-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.edit-hint{font-size:12px;color:var(--muted);}
+.btn-reset{border:none;background:none;color:#A12B3D;font-size:12px;font-weight:700;padding:4px 2px;text-decoration:underline;}
 
-.card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+/* empty state */
+.empty{
+  grid-column:1/-1;text-align:center;background:var(--card);
+  border:1.5px dashed var(--line);border-radius:var(--r);padding:48px 24px;
+}
+.empty h3{font-family:var(--display);font-size:20px;margin-bottom:6px;}
+.empty p{color:var(--muted);font-size:14px;margin-bottom:18px;}
+.empty button{
+  border:none;background:var(--ink);color:#fff;font-weight:700;
+  padding:10px 20px;border-radius:11px;
+}
 
-.link-btn{
-  display:inline-flex;align-items:center;gap:7px;
-  padding:8px 15px;border-radius:9px;
-  font-size:12px;font-weight:700;text-decoration:none;
-  transition:transform .15s,opacity .15s;
-  font-family:'Plus Jakarta Sans',sans-serif;
-}
-.link-btn:hover{transform:translateY(-1px);opacity:.86;}
-.link-on{background:var(--navy);color:#fff;}
-.link-off{background:#F0F0F0;color:#AAAAAA;pointer-events:none;cursor:not-allowed;}
-
-.link-btn svg{width:12px;height:12px;flex-shrink:0;}
-
-.badge{
-  font-size:10px;font-weight:700;padding:3px 9px;
-  border-radius:7px;letter-spacing:.04em;text-transform:uppercase;
-}
-.badge-on{background:#DCFCE7;color:#166534;}
-.badge-off{background:#FEF3C7;color:#92400E;}
-
-/* EDIT BTN */
-.card-edit-btn{
-  position:absolute;top:14px;right:14px;
-  width:28px;height:28px;border-radius:8px;
-  background:#EEF2FF;border:1px solid rgba(107,63,160,.18);
-  color:var(--violet);font-size:13px;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;opacity:0;
-  transition:opacity .2s,transform .15s,background .15s;
-  z-index:5;
-}
-.kelas-card:hover .card-edit-btn{opacity:1;}
-.card-edit-btn:hover{transform:scale(1.1);background:var(--violet);color:#fff;}
-
-/* EDIT PANEL */
-.edit-panel{
-  display:none;flex-direction:column;gap:8px;
-  background:#F5F0FF;border:1.5px solid rgba(107,63,160,.20);
-  border-radius:10px;padding:12px 14px;
-  animation:slideDown .2s ease;
-}
-.edit-panel.open{display:flex;}
-@keyframes slideDown{
-  from{opacity:0;transform:translateY(-6px);}
-  to{opacity:1;transform:translateY(0);}
-}
-.edit-panel label{
-  font-size:10px;font-weight:700;text-transform:uppercase;
-  letter-spacing:.08em;color:var(--violet);
-}
-.edit-panel-row{display:flex;gap:7px;}
-.edit-inp{
-  flex:1;border:1.5px solid rgba(107,63,160,.22);border-radius:8px;
-  padding:8px 12px;font-size:12px;font-weight:500;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  color:var(--navy);outline:none;background:#fff;
-  transition:border-color .2s;
-}
-.edit-inp:focus{border-color:var(--violet);}
-.edit-inp::placeholder{color:#AAA;}
-.edit-save-btn{
-  padding:8px 14px;border-radius:8px;
-  background:var(--navy);color:#fff;
-  font-size:12px;font-weight:700;
-  border:none;cursor:pointer;white-space:nowrap;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  transition:opacity .15s,transform .15s;
-}
-.edit-save-btn:hover{opacity:.88;transform:translateY(-1px);}
-.edit-clear-btn{
-  padding:8px 10px;border-radius:8px;
-  background:#FEE2E2;color:#991B1B;
-  font-size:12px;font-weight:700;
-  border:none;cursor:pointer;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  transition:opacity .15s;
-}
-.edit-clear-btn:hover{opacity:.8;}
-.edit-hint{font-size:10px;color:var(--muted);line-height:1.5;}
-
-/* KELAS XII — PROSES */
-.proses-box{
-  background:var(--surface);
-  border:1.5px dashed rgba(10,22,40,.20);
-  border-radius:var(--r);
-  padding:40px 28px;
-  text-align:center;
-  max-width:560px;
-}
-.proses-icon{font-size:34px;margin-bottom:12px;}
-.proses-title{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:6px;}
-.proses-text{font-size:13px;color:var(--muted);line-height:1.7;}
-
-/* TOAST */
+/* toast */
 #toast{
-  position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);
-  background:var(--navy);color:#fff;
-  padding:11px 22px;border-radius:40px;
-  font-size:13px;font-weight:600;
-  box-shadow:0 8px 32px rgba(0,0,0,.25);
-  opacity:0;pointer-events:none;
-  transition:opacity .3s,transform .3s;
-  z-index:999;white-space:nowrap;
+  position:fixed;bottom:26px;left:50%;transform:translate(-50%,20px);
+  background:var(--ink);color:#fff;padding:12px 22px;border-radius:99px;
+  font-size:14px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.28);
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:99;
+  max-width:calc(100vw - 32px);text-align:center;
 }
-#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+#toast.show{opacity:1;transform:translate(-50%,0);}
 
-/* FOOTER */
-footer{
-  background:var(--navy);
-  padding:36px 52px;
-  text-align:center;
-  color:rgba(255,255,255,.28);
-  font-size:13px;line-height:1.9;
+footer{background:var(--ink);color:rgba(255,255,255,.5);font-size:13px;text-align:center;padding:32px 24px;line-height:1.8;}
+footer strong{color:rgba(255,255,255,.85);}
+
+/* ───────── RESPONSIVE ───────── */
+@media(max-width:900px){
+  .hero-body{grid-template-columns:1fr;gap:32px;padding:36px 0 40px;}
 }
-footer strong{color:rgba(255,255,255,.60);}
-
-/* MOBILE */
-@media(max-width:768px){
-  .nav{padding:14px 20px;}
-  .hero-body{grid-template-columns:1fr;padding:36px 20px 32px;}
-  .hero-visual{display:none;}
-  .wrap{padding:0 20px;}
-  .tabs-bar{padding:20px 0 0;overflow-x:auto;flex-wrap:nowrap;gap:6px;}
-  .tab-btn{white-space:nowrap;padding:9px 18px;}
-  .kelas-grid{grid-template-columns:1fr;}
-  footer{padding:28px 20px;}
-  .card-edit-btn{opacity:1;}
+@media(max-width:640px){
+  .hero-in,.wrap{padding:0 18px;}
+  .nav-tags .nav-tag:not(.gold){display:none;}
+  .search kbd{display:none;}
+  .grid{grid-template-columns:1fr;}
+  .filters{flex-direction:column;align-items:flex-start;}
+  .chips{max-width:100%;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important;scroll-behavior:auto !important;}
 }
 </style>
 </head>
 <body>
 
-<!-- TOAST -->
-<div id="toast"></div>
+<div id="toast" role="status" aria-live="polite"></div>
 
-<!-- HERO -->
 <header class="hero">
-  <div class="hero-mesh"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-dots"></div>
+  <div class="hero-in">
+    <nav class="nav">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="https://iili.io/CKpijKg.md.png" alt="Logo SMK" onerror="this.parentElement.innerHTML='<span style=&quot;font-weight:800;color:#E5A82B;&quot;>SMK</span>'">
+        </div>
+        <div>
+          <div class="brand-name">Portal Akademik SMK</div>
+          <div class="brand-sub">Rekap nilai semua kelas</div>
+        </div>
+      </div>
+      <div class="nav-tags">
+        <span class="nav-tag">Kurikulum Merdeka</span>
+        <span class="nav-tag gold">TP 2026/2027</span>
+      </div>
+    </nav>
 
-  <nav class="nav">
-    <div class="nav-brand">
-      <div class="nav-logo-wrap">
-        <img src="https://iili.io/CKpijKg.md.png" alt="Logo SMK" onerror="this.parentElement.innerHTML='<span style=\'font-size:22px;font-weight:900;color:#D4A017;\'>SMK</span>'">
+    <div class="hero-body">
+      <div>
+        <h1>Portal nilai kelas</h1>
+        <p class="hero-desc">Cari kelas Anda atau pilih tingkat di bawah, lalu buka portal nilainya. Kelas yang belum siap ditandai Menyusul.</p>
+        <div class="search" id="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="q" type="search" placeholder="Cari kelas, misalnya XII MPLB" autocomplete="off" aria-label="Cari kelas">
+          <kbd>/</kbd>
+          <button class="search-clear" id="qclear" type="button" aria-label="Hapus pencarian">×</button>
+        </div>
       </div>
-      <div class="nav-title">
-        Portal Akademik SMK
-        <span>Semua Kelas · Tahun Pelajaran 2026/2027</span>
-      </div>
-    </div>
-    <div class="nav-right">
-      <div class="nav-pill">✦ Kurikulum Merdeka</div>
-      <div class="nav-year">TP 2026/2027</div>
-    </div>
-  </nav>
 
-  <div class="hero-body">
-    <div class="hero-text">
-      <div class="hero-eyebrow">
-        <span class="hero-eyebrow-dot"></span>
-        Portal Nilai &amp; Akademik
-      </div>
-      <h1 class="hero-h1">
-        Portal Kelas<br><em>Semua Jurusan</em>
-      </h1>
-      <p class="hero-desc">
-        Platform rekap nilai dan pengelolaan akademik untuk seluruh kelas — Kelas X dan Kelas XI (Kelas XII sedang dalam proses). Setiap kelas memiliki portal nilai mandiri yang dapat diakses langsung oleh guru pengampu.
-      </p>
-      <div class="hero-stats">
-        <div class="h-stat">
-          <div class="h-stat-n">16<b>+</b></div>
-          <div class="h-stat-l">Total Kelas</div>
-        </div>
-        <div class="h-stat">
-          <div class="h-stat-n" style="color:var(--gold3);">8</div>
-          <div class="h-stat-l">Jurusan</div>
-        </div>
-        <div class="h-stat">
-          <div class="h-stat-n">2026</div>
-          <div class="h-stat-l">Tahun Pelajaran</div>
-        </div>
-      </div>
+      <div class="progress" id="progress" aria-label="Kesiapan portal per tingkat"></div>
     </div>
-
-    <div class="hero-visual">
-      <div class="hero-visual-card">
-        <div class="hvc-title">Status Portal Kelas</div>
-        <div class="hvc-row">
-          <div class="hvc-dot" style="background:#F0C040;"></div>
-          <div class="hvc-name">X Akuntansi &amp; Keuangan Lembaga</div>
-          <span class="hvc-badge hvc-on">Aktif</span>
-        </div>
-        <div class="hvc-row">
-          <div class="hvc-dot" style="background:#2E8FE8;"></div>
-          <div class="hvc-name">X Manajemen Perkantoran</div>
-          <span class="hvc-badge hvc-on">Aktif</span>
-        </div>
-        <div class="hvc-row">
-          <div class="hvc-dot" style="background:#10B884;"></div>
-          <div class="hvc-name">X Pemasaran</div>
-          <span class="hvc-badge hvc-on">Aktif</span>
-        </div>
-        <div class="hvc-row">
-          <div class="hvc-dot" style="background:#9254D8;"></div>
-          <div class="hvc-name">X TKJ &amp; Telekomunikasi 1</div>
-          <span class="hvc-badge hvc-on">Aktif</span>
-        </div>
-        <div class="hvc-row">
-          <div class="hvc-dot" style="background:#E07020;"></div>
-          <div class="hvc-name">X Teknik Ketenagalistrikan 1</div>
-          <span class="hvc-badge hvc-on">Aktif</span>
-        </div>
-        <div class="hvc-row">
-          <div class="hvc-dot" style="background:#AAA;"></div>
-          <div class="hvc-name">Kelas XII</div>
-          <span class="hvc-badge hvc-soon">Proses</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="wave">
-    <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path d="M0,32 C200,64 400,0 600,32 C800,64 1000,0 1200,32 C1320,52 1390,20 1440,32 L1440,64 L0,64 Z" fill="#F2F0EA"/>
-    </svg>
   </div>
 </header>
 
-<!-- MAIN -->
-<main>
-<div class="wrap">
-
-  <!-- TABS -->
-  <div class="tabs-bar">
-    <button class="tab-btn active" onclick="switchTab('x', this)">🎓 Kelas X</button>
-    <button class="tab-btn" onclick="switchTab('xi', this)">📚 Kelas XI</button>
-    <button class="tab-btn" onclick="switchTab('xii', this)">🎒 Kelas XII</button>
+<div class="bar">
+  <div class="wrap">
+    <div class="tabs" id="tabs" role="group" aria-label="Pilih tingkat kelas"></div>
   </div>
-
-  <!-- ═══ KELAS X ═══ -->
-  <div class="level-section visible" id="tab-x">
-    <section class="sec sec-last">
-      <div class="sec-head">
-        <div class="sec-tag tag-gold">🎓 Tingkat X</div>
-        <h2 class="sec-title">Portal Kelas X</h2>
-        <p class="sec-desc">
-          Daftar portal nilai untuk semua jurusan Kelas X. Klik <strong style="color:var(--violet)">✏️</strong> untuk menambahkan link portal masing-masing kelas.
-        </p>
-      </div>
-      <div class="kelas-grid" id="grid-x"></div>
-    </section>
-  </div>
-
-  <!-- ═══ KELAS XI ═══ -->
-  <div class="level-section" id="tab-xi">
-    <section class="sec sec-last">
-      <div class="sec-head">
-        <div class="sec-tag tag-gold">📚 Tingkat XI</div>
-        <h2 class="sec-title">Portal Kelas XI</h2>
-        <p class="sec-desc">
-          Daftar portal nilai untuk semua jurusan Kelas XI. Klik <strong style="color:var(--violet)">✏️</strong> untuk menambahkan link portal masing-masing kelas.
-        </p>
-      </div>
-      <div class="kelas-grid" id="grid-xi"></div>
-    </section>
-  </div>
-
-  <!-- ═══ KELAS XII ═══ -->
-  <div class="level-section" id="tab-xii">
-    <section class="sec sec-last">
-      <div class="sec-head">
-        <div class="sec-tag tag-gold">🎒 Tingkat XII</div>
-        <h2 class="sec-title">Portal Kelas XII</h2>
-        <p class="sec-desc">
-          Portal nilai untuk semua jurusan Kelas XII.
-        </p>
-      </div>
-      <div class="proses-box">
-        <div class="proses-icon">🛠️</div>
-        <div class="proses-title">Sedang Dalam Proses</div>
-        <div class="proses-text">Portal Kelas XII masih dalam tahap pengerjaan dan akan segera tersedia.</div>
-      </div>
-    </section>
-  </div>
-
 </div>
+
+<main class="wrap">
+  <div class="filters">
+    <div class="chips" id="chips" role="group" aria-label="Saring menurut jurusan"></div>
+    <div class="seg" id="seg" role="group" aria-label="Saring menurut status">
+      <button type="button" data-status="all" aria-pressed="true">Semua</button>
+      <button type="button" data-status="on" aria-pressed="false">Aktif</button>
+      <button type="button" data-status="off" aria-pressed="false">Menyusul</button>
+    </div>
+  </div>
+  <p class="result-line" id="result" aria-live="polite"></p>
+  <div class="grid" id="grid"></div>
 </main>
 
 <footer>
   <strong>Portal Akademik SMK</strong><br>
-  Rekap Nilai &amp; Data Kelas · Tahun Pelajaran 2026/2027<br>
-  <span style="font-size:12px;opacity:.5;">Klik ✏️ pada kartu kelas untuk menambahkan atau mengubah link portal · Data tersimpan di browser lokal</span>
+  Rekap nilai dan data kelas, Tahun Pelajaran 2026/2027<br>
+  <span style="font-size:12px;opacity:.7;">Tombol pensil pada kartu untuk menambah atau mengubah link. Perubahan tersimpan di browser ini saja.</span>
 </footer>
 
 <script>
-/* ═══ DATA KELAS ═══ */
-const KELAS_X = [
-  { id:'x-mplb',  name:'Manajemen Perkantoran dan Layanan Bisnis',          icon:'🏢', css:'ck-bisnis',    label:'Kelas X · MPLB'      },
-  { id:'x-akl',   name:'Akuntansi dan Keuangan Lembaga',                    icon:'📊', css:'ck-akl',       label:'Kelas X · AKL'       },
-  { id:'x-pms',   name:'Pemasaran',                                          icon:'🛍️', css:'ck-pemasaran', label:'Kelas X · Pemasaran' },
-  { id:'x-ulp',   name:'Usaha Layanan Pariwisata',                           icon:'✈️', css:'ck-pariwisata',label:'Kelas X · ULP'       },
-  { id:'x-tjkt1', name:'Teknik Jaringan Komputer dan Telekomunikasi 1',      icon:'🌐', css:'ck-tkjt1',     label:'Kelas X · TKJT 1'   },
-  { id:'x-tjkt2', name:'Teknik Jaringan Komputer dan Telekomunikasi 2',      icon:'💻', css:'ck-tkjt2',     label:'Kelas X · TKJT 2'   },
-  { id:'x-tk1',   name:'Teknik Ketenagalistrikan 1',                         icon:'⚡', css:'ck-listrik1',  label:'Kelas X · TL 1'     },
-  { id:'x-tk2',   name:'Teknik Ketenagalistrikan 2',                         icon:'🔌', css:'ck-listrik2',  label:'Kelas X · TL 2'     },
-];
+/* ═══ DATA ═══ */
+const JURUSAN = {
+  mplb:{short:'MPLB', name:'Manajemen Perkantoran dan Layanan Bisnis',         icon:'🏢', c:'#1B6FC4', bg:'#E6F0FB'},
+  akl: {short:'AKL',  name:'Akuntansi dan Keuangan Lembaga',                   icon:'📊', c:'#B07A00', bg:'#FBF1D6'},
+  pms: {short:'PMS',  name:'Pemasaran',                                         icon:'🛍️', c:'#0D8A6C', bg:'#DFF4EC'},
+  ulp: {short:'ULP',  name:'Usaha Layanan Pariwisata',                          icon:'✈️', c:'#C0364A', bg:'#FBE6EA'},
+  tjkt:{short:'TJKT', name:'Teknik Jaringan Komputer dan Telekomunikasi',       icon:'🌐', c:'#6B3FA0', bg:'#EFE7FA'},
+  tk:  {short:'TK',   name:'Teknik Ketenagalistrikan',                          icon:'⚡', c:'#B05010', bg:'#FDEBDB'}
+};
 
-const KELAS_XI = [
-  { id:'xi-mplb',  name:'Manajemen Perkantoran dan Layanan Bisnis',          icon:'🏢', css:'ck-bisnis',    label:'Kelas XI · MPLB'      },
-  { id:'xi-akl',   name:'Akuntansi dan Keuangan Lembaga',                    icon:'📊', css:'ck-akl',       label:'Kelas XI · AKL'       },
-  { id:'xi-pms',   name:'Pemasaran',                                          icon:'🛍️', css:'ck-pemasaran', label:'Kelas XI · Pemasaran' },
-  { id:'xi-ulp',   name:'Usaha Layanan Pariwisata',                           icon:'✈️', css:'ck-pariwisata',label:'Kelas XI · ULP'       },
-  { id:'xi-tjkt1', name:'Teknik Jaringan Komputer dan Telekomunikasi 1',      icon:'🌐', css:'ck-tkjt1',     label:'Kelas XI · TKJT 1'   },
-  { id:'xi-tjkt2', name:'Teknik Jaringan Komputer dan Telekomunikasi 2',      icon:'💻', css:'ck-tkjt2',     label:'Kelas XI · TKJT 2'   },
-  { id:'xi-tk1',   name:'Teknik Ketenagalistrikan 1',                         icon:'⚡', css:'ck-listrik1',  label:'Kelas XI · TL 1'     },
-  { id:'xi-tk2',   name:'Teknik Ketenagalistrikan 2',                         icon:'🔌', css:'ck-listrik2',  label:'Kelas XI · TL 2'     },
-];
+const LEVELS = {
+  x:  {label:'Kelas X',   roman:'X'},
+  xi: {label:'Kelas XI',  roman:'XI'},
+  xii:{label:'Kelas XII', roman:'XII'}
+};
 
-/* ═══ DEFAULT LINKS — TP 2026/2027 ═══
-   Semua link default didefinisikan di sini.
-   Kalau ada link baru tinggal tambah/ubah di objek ini.
-*/
+/* [jurusan, nomor rombel (opsional)] */
+const ROSTER = {
+  x:  [['mplb'],['akl'],['pms'],['ulp'],['tjkt',1],['tjkt',2],['tk',1],['tk',2]],
+  xi: [['mplb'],['akl'],['pms'],['ulp'],['tjkt',1],['tjkt',2],['tk',1],['tk',2]],
+  xii:[['mplb'],['akl'],['pms'],['ulp'],['tjkt',1],['tjkt',2],['tk']]
+};
+
+const CLASSES = [];
+Object.keys(ROSTER).forEach(level => {
+  ROSTER[level].forEach(([jur, n]) => {
+    const j = JURUSAN[jur];
+    CLASSES.push({
+      id: level + '-' + jur + (n || ''),
+      level, jur,
+      label: LEVELS[level].roman + ' ' + j.short + (n ? ' ' + n : ''),
+      name: j.name + (n ? ' ' + n : ''),
+      short: j.short
+    });
+  });
+});
+
+/* ═══ LINK DEFAULT TP 2026/2027 ═══
+   Tambah atau ubah link baru di objek ini. Kelas tanpa link tampil sebagai "Menyusul". */
 const DEFAULT_LINKS = {
   /* Kelas X */
   'x-mplb' : 'https://alex-bahy.github.io/Portal-Kelas-XMPLB-TP-2026-2027/',
@@ -633,183 +405,271 @@ const DEFAULT_LINKS = {
   'xi-tjkt1': 'https://alex-bahy.github.io/Portal-Kelas-XITJKT1-TP-2026-2027-new/',
   'xi-tjkt2': 'https://alex-bahy.github.io/Portal-Kelas-XITJKT2-ganjil-TP-2026-2027/',
   'xi-tk1'  : 'https://alex-bahy.github.io/Portal-Kelas-XITK1-ganjil-TP-2026-2027/',
-  'xi-tk2'  : 'https://alex-bahy.github.io/Portal-Kelas-XITK2-TP-2026-2027/'
+  'xi-tk2'  : 'https://alex-bahy.github.io/Portal-Kelas-XITK2-TP-2026-2027/',
+
+  /* Kelas XII */
+  'xii-mplb': 'https://alex-bahy.github.io/Portal-Kelas-XIIMPLB-ganjil-genap-TP-2026-2027/',
+  'xii-akl' : 'https://alex-bahy.github.io/Portal-Kelas-XIIAKL-ganjil-genap-TP-2026-2027/'
+  /* menyusul: xii-pms, xii-ulp, xii-tjkt1, xii-tjkt2, xii-tk */
 };
 
-/* Versi key dinaikkan (v3) agar link lama yang pernah disimpan di browser
-   tidak menimpa link default TP 2026/2027 yang baru. */
+/* Key tetap v3 agar link yang sudah diedit di browser tidak hilang. */
 const STORAGE_KEY = 'smk_portal_links_v3';
+const TAB_KEY = 'smk_portal_tab';
 
 function loadLinks(){
-  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
-  catch(e){ return {}; }
+  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }catch(e){ return {}; }
 }
 function saveLinks(d){
-  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
-  catch(e){}
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }catch(e){}
 }
-
-/* ═══ RESOLVE URL ═══
-   Prioritas: localStorage → DEFAULT_LINKS → kosong
-   localStorage yang menyimpan string kosong ("") diabaikan,
-   sehingga DEFAULT_LINKS tetap berlaku.
-*/
+/* Prioritas: link tersimpan di browser, lalu DEFAULT_LINKS, lalu kosong */
 function resolveUrl(id){
-  const links = loadLinks();
-  const saved = links[id];
+  const saved = loadLinks()[id];
   if(saved && saved.trim() !== '') return saved.trim();
   return DEFAULT_LINKS[id] || '';
 }
 
-/* ═══ RENDER CARDS ═══ */
-function renderCard(kelas){
-  const url  = resolveUrl(kelas.id);
-  const isOn = !!url;
+/* ═══ HELPERS ═══ */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const norm = s => s.toLowerCase().replace(/\s+/g,'');
 
+const state = { level:'x', q:'', jur:'all', status:'all' };
+
+try{
+  const h = location.hash.replace('#','');
+  const s = localStorage.getItem(TAB_KEY);
+  if(LEVELS[h]) state.level = h; else if(LEVELS[s]) state.level = s;
+}catch(e){}
+
+function matches(c){
+  const q = norm(state.q);
+  if(q && !norm(c.label + c.name + c.short).includes(q)) return false;
+  if(state.jur !== 'all' && c.jur !== state.jur) return false;
+  const on = !!resolveUrl(c.id);
+  if(state.status === 'on' && !on) return false;
+  if(state.status === 'off' && on) return false;
+  return true;
+}
+
+/* ═══ RENDER ═══ */
+const ICON_COPY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>';
+const ICON_EDIT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
+
+function renderCard(c){
+  const j = JURUSAN[c.jur];
+  const url = resolveUrl(c.id);
+  const on = !!url;
+  const hasDefault = !!DEFAULT_LINKS[c.id];
   return `
-    <div class="kelas-card ${kelas.css}" id="card-${kelas.id}">
-      <button class="card-edit-btn" onclick="toggleEdit('${kelas.id}')" title="Edit Link">✏️</button>
-      <div class="card-row">
-        <div class="card-icon">${kelas.icon}</div>
-        <div class="card-info">
-          <div class="card-kelas-label">${kelas.label}</div>
-          <div class="card-name">${kelas.name}</div>
+  <article class="card ${on ? 'is-on' : 'is-off'}" id="card-${c.id}" data-id="${c.id}" style="--c:${j.c};--cbg:${j.bg}">
+    <div class="card-top">
+      <div class="card-icon" aria-hidden="true">${j.icon}</div>
+      <div class="card-main">
+        <h3 class="card-label">${esc(c.label)}</h3>
+        <p class="card-name">${esc(c.name)}</p>
+      </div>
+      <span class="status ${on ? 'on' : 'off'}"><i></i>${on ? 'Aktif' : 'Menyusul'}</span>
+    </div>
+    <div class="card-actions">
+      ${on
+        ? `<a class="btn-open" href="${esc(url)}" target="_blank" rel="noopener">Buka portal</a>
+           <button type="button" class="icon-btn" data-action="copy" title="Salin link" aria-label="Salin link portal ${esc(c.label)}">${ICON_COPY}</button>`
+        : `<span class="btn-open disabled" aria-disabled="true">Belum tersedia</span>`}
+      <button type="button" class="icon-btn" data-action="edit" title="${on ? 'Ubah link' : 'Tambah link'}" aria-label="${on ? 'Ubah' : 'Tambah'} link portal ${esc(c.label)}" aria-expanded="false">${ICON_EDIT}</button>
+    </div>
+    <div class="edit">
+      <form data-id="${c.id}" novalidate>
+        <div class="edit-in">
+          <label for="inp-${c.id}">Link portal ${esc(c.label)}</label>
+          <div class="edit-row">
+            <input type="url" id="inp-${c.id}" placeholder="https://username.github.io/nama-portal/" value="${esc(url)}">
+            <button type="submit" class="btn-save">Simpan</button>
+          </div>
+          <div class="edit-foot">
+            <span class="edit-hint">Tekan Enter untuk menyimpan, Esc untuk menutup.</span>
+            <button type="button" class="btn-reset" data-action="reset">${hasDefault ? 'Kembalikan bawaan' : 'Hapus link'}</button>
+          </div>
         </div>
-      </div>
-      <div class="edit-panel" id="edit-${kelas.id}">
-        <label>🔗 Link Portal Kelas Ini</label>
-        <div class="edit-panel-row">
-          <input type="url" class="edit-inp" id="inp-${kelas.id}"
-            placeholder="https://username.github.io/portal-kelas/"
-            value="${url}">
-          <button class="edit-save-btn" onclick="saveLink('${kelas.id}')">Simpan</button>
-          <button class="edit-clear-btn" onclick="clearLink('${kelas.id}')" title="Hapus link">✕</button>
-        </div>
-        <div class="edit-hint">Paste link portal kelas, tombol "Buka Portal" akan langsung aktif.</div>
-      </div>
-      <div class="card-foot">
-        <a href="${isOn ? url : '#'}"
-           class="link-btn ${isOn ? 'link-on' : 'link-off'}"
-           id="btn-${kelas.id}"
-           target="_blank" rel="noopener"
-           ${!isOn ? 'style="pointer-events:none;"' : ''}>
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M2 8h12M9 3l5 5-5 5"/>
-          </svg>
-          Buka Portal
-        </a>
-        <span class="badge ${isOn ? 'badge-on' : 'badge-off'}" id="badge-${kelas.id}">
-          ${isOn ? 'Aktif ✓' : 'Segera'}
-        </span>
-      </div>
-    </div>`;
+      </form>
+    </div>
+  </article>`;
 }
 
-function renderGrid(kelasArr, gridId){
-  const el = document.getElementById(gridId);
-  el.innerHTML = kelasArr.map(renderCard).join('');
-  // scroll-in animation
-  el.querySelectorAll('.kelas-card').forEach((c, i) => {
-    c.style.opacity = '0';
-    c.style.transform = 'translateY(18px)';
-    c.style.transition = `opacity .4s ease ${i * .06}s, transform .4s ease ${i * .06}s, box-shadow .2s, border-color .2s`;
-    observer.observe(c);
-  });
+function renderTabs(){
+  $('#tabs').innerHTML = Object.keys(LEVELS).map(k => {
+    const n = CLASSES.filter(c => c.level === k && matches(c)).length;
+    return `<button type="button" class="tab" data-level="${k}" aria-pressed="${state.level === k}">${LEVELS[k].label}<span class="count">${n}</span></button>`;
+  }).join('');
 }
 
-/* ═══ APPLY LINK (update DOM tanpa re-render) ═══ */
-function applyLink(id, url){
-  const btn   = document.getElementById('btn-' + id);
-  const badge = document.getElementById('badge-' + id);
-  if(!btn || !badge) return;
-  if(url){
-    btn.href = url;
-    btn.className = 'link-btn link-on';
-    btn.style.pointerEvents = '';
-    badge.textContent = 'Aktif ✓';
-    badge.className = 'badge badge-on';
+function renderProgress(){
+  $('#progress').innerHTML = '<div class="progress-title">Kesiapan portal</div>' +
+    Object.keys(LEVELS).map(k => {
+      const all = CLASSES.filter(c => c.level === k);
+      const act = all.filter(c => resolveUrl(c.id)).length;
+      const pct = Math.round(act / all.length * 100);
+      const done = act === all.length;
+      return `
+      <button type="button" class="prog-row ${done ? 'done' : ''} ${state.level === k ? 'current' : ''}" data-level="${k}" aria-label="${LEVELS[k].label}: ${act} dari ${all.length} portal aktif">
+        <span class="prog-name">${LEVELS[k].label}</span>
+        <span class="prog-num"><b>${act}</b> dari ${all.length} aktif</span>
+        <span class="prog-bar"><span class="prog-fill" style="width:${pct}%"></span></span>
+      </button>`;
+    }).join('');
+}
+
+function renderChips(){
+  const items = [['all','Semua jurusan']].concat(Object.keys(JURUSAN).map(k => [k, JURUSAN[k].short]));
+  $('#chips').innerHTML = items.map(([k, t]) =>
+    `<button type="button" class="chip" data-jur="${k}" aria-pressed="${state.jur === k}">${t}</button>`).join('');
+}
+
+function render(){
+  renderTabs();
+  renderProgress();
+  renderChips();
+  document.querySelectorAll('#seg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.status === state.status));
+
+  const total = CLASSES.filter(c => c.level === state.level).length;
+  const list = CLASSES.filter(c => c.level === state.level && matches(c));
+  const grid = $('#grid');
+
+  if(list.length){
+    grid.innerHTML = list.map(renderCard).join('');
   } else {
-    btn.href = '#';
-    btn.className = 'link-btn link-off';
-    btn.style.pointerEvents = 'none';
-    badge.textContent = 'Segera';
-    badge.className = 'badge badge-off';
+    grid.innerHTML = `
+      <div class="empty">
+        <h3>Tidak ada kelas yang cocok</h3>
+        <p>Di ${LEVELS[state.level].label} tidak ada hasil untuk pencarian atau saringan ini. Cek angka di tab tingkat lain, atau hapus saringan.</p>
+        <button type="button" data-action="resetfilters">Hapus pencarian dan saringan</button>
+      </div>`;
   }
+  $('#result').textContent = `Menampilkan ${list.length} dari ${total} kelas ${LEVELS[state.level].label}`;
+  $('#search').classList.toggle('has-text', state.q !== '');
 }
 
-/* ═══ EDIT SYSTEM ═══ */
-function toggleEdit(id){
-  const panel = document.getElementById('edit-' + id);
-  const inp   = document.getElementById('inp-' + id);
-  const isOpen = panel.classList.contains('open');
-  document.querySelectorAll('.edit-panel.open').forEach(p => p.classList.remove('open'));
-  if(!isOpen){
-    panel.classList.add('open');
-    inp.value = resolveUrl(id);
-    setTimeout(() => { inp.focus(); inp.select(); }, 60);
-  }
-  inp.onkeydown = (e) => {
-    if(e.key === 'Enter')  saveLink(id);
-    if(e.key === 'Escape') panel.classList.remove('open');
-  };
+/* ═══ ACTIONS ═══ */
+function setLevel(k){
+  state.level = k;
+  try{ localStorage.setItem(TAB_KEY, k); }catch(e){}
+  history.replaceState(null, '', '#' + k);
+  render();
 }
 
-function saveLink(id){
-  const inp = document.getElementById('inp-' + id);
-  let url = inp.value.trim();
-  if(!url){ showToast('⚠️ Link tidak boleh kosong.'); return; }
-  if(!url.startsWith('http')){ url = 'https://' + url; inp.value = url; }
-  const links = loadLinks();
-  links[id] = url;
-  saveLinks(links);
-  applyLink(id, url);
-  document.getElementById('edit-' + id).classList.remove('open');
-  showToast('✅ Link berhasil disimpan!');
-}
-
-function clearLink(id){
-  const links = loadLinks();
-  delete links[id];
-  saveLinks(links);
-  // setelah hapus dari localStorage, fallback ke default
-  const def = DEFAULT_LINKS[id] || '';
-  applyLink(id, def);
-  document.getElementById('inp-' + id).value = def;
-  document.getElementById('edit-' + id).classList.remove('open');
-  showToast('🗑️ Link dihapus, kembali ke default.');
-}
-
-/* ═══ TABS ═══ */
-function switchTab(tab, btn){
-  document.querySelectorAll('.level-section').forEach(s => s.classList.remove('visible'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + tab).classList.add('visible');
-  btn.classList.add('active');
-}
-
-/* ═══ TOAST ═══ */
 let toastTimer;
 function showToast(msg){
-  const t = document.getElementById('toast');
+  const t = $('#toast');
   t.textContent = msg;
   t.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
 }
 
-/* ═══ INTERSECTION OBSERVER ═══ */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting){
-      e.target.style.opacity = '1';
-      e.target.style.transform = 'translateY(0)';
-    }
+function copyText(text){
+  if(navigator.clipboard && window.isSecureContext){
+    return navigator.clipboard.writeText(text);
+  }
+  return new Promise((res, rej) => {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy') ? res() : rej(); }catch(e){ rej(); }
+    ta.remove();
   });
-}, { threshold: 0.07 });
+}
+
+function closeEditors(except){
+  document.querySelectorAll('.card.editing').forEach(card => {
+    if(card === except) return;
+    card.classList.remove('editing');
+    const b = card.querySelector('[data-action="edit"]');
+    if(b) b.setAttribute('aria-expanded', 'false');
+  });
+}
+
+function toggleEdit(card){
+  const open = !card.classList.contains('editing');
+  closeEditors(card);
+  card.classList.toggle('editing', open);
+  card.querySelector('[data-action="edit"]').setAttribute('aria-expanded', String(open));
+  if(open){
+    const inp = card.querySelector('input');
+    setTimeout(() => { inp.focus(); inp.select(); }, 60);
+  }
+}
+
+function saveLink(id, raw){
+  let url = raw.trim();
+  if(!url){ showToast('Isi link dulu, atau pilih Hapus link.'); return; }
+  if(!/^https?:\/\//i.test(url)) url = 'https://' + url;
+  const links = loadLinks();
+  links[id] = url;
+  saveLinks(links);
+  render();
+  showToast('Link disimpan');
+}
+
+function resetLink(id){
+  const links = loadLinks();
+  delete links[id];
+  saveLinks(links);
+  render();
+  showToast(DEFAULT_LINKS[id] ? 'Link dikembalikan ke bawaan' : 'Link dihapus');
+}
+
+/* ═══ EVENTS ═══ */
+document.addEventListener('click', e => {
+  const lv = e.target.closest('[data-level]');
+  if(lv){ setLevel(lv.dataset.level); return; }
+
+  const chip = e.target.closest('[data-jur]');
+  if(chip){ state.jur = chip.dataset.jur; render(); return; }
+
+  const st = e.target.closest('[data-status]');
+  if(st){ state.status = st.dataset.status; render(); return; }
+
+  const act = e.target.closest('[data-action]');
+  if(!act) return;
+  const card = act.closest('.card');
+  const id = card && card.dataset.id;
+
+  if(act.dataset.action === 'edit') toggleEdit(card);
+  if(act.dataset.action === 'copy'){
+    copyText(resolveUrl(id)).then(() => showToast('Link disalin')).catch(() => showToast('Gagal menyalin. Salin manual dari tombol pensil.'));
+  }
+  if(act.dataset.action === 'reset') resetLink(id);
+  if(act.dataset.action === 'resetfilters'){
+    state.q = ''; state.jur = 'all'; state.status = 'all';
+    $('#q').value = '';
+    render();
+  }
+});
+
+document.addEventListener('submit', e => {
+  const f = e.target.closest('form[data-id]');
+  if(!f) return;
+  e.preventDefault();
+  saveLink(f.dataset.id, f.querySelector('input').value);
+});
+
+document.addEventListener('keydown', e => {
+  if(e.key === '/' && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)){
+    e.preventDefault();
+    $('#q').focus();
+  }
+  if(e.key === 'Escape'){
+    if(document.activeElement === $('#q') && state.q){ $('#qclear').click(); return; }
+    closeEditors(null);
+  }
+});
+
+$('#q').addEventListener('input', e => { state.q = e.target.value; render(); });
+$('#qclear').addEventListener('click', () => { state.q = ''; $('#q').value = ''; render(); $('#q').focus(); });
 
 /* ═══ INIT ═══ */
-renderGrid(KELAS_X,  'grid-x');
-renderGrid(KELAS_XI, 'grid-xi');
+render();
 </script>
 </body>
 </html>
